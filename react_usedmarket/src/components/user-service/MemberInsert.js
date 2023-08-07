@@ -28,14 +28,6 @@ function MemberInsert() {
     formData.append("latitude", latitude);
 
 
-    console.log(formData.get("picFile"));
-    console.log(formData.get("username"));
-    console.log(formData.get("password"));
-    console.log(formData.get("password2"));
-    console.log(formData.get("latitude"));
-    console.log(formData.get("longitude"));
-    console.log(formData.get("name"));
-
     fetch_multiForm("POST", "http://localhost:8000/user-service/users", formData)
     
 

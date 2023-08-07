@@ -3,7 +3,7 @@ import SellInsert from '../sell-service/SellInsert'
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { fetch_multiForm } from '../../networkFns/fetchFns';
+import { fetch_multiForm, fetch_multiForm2 } from '../../networkFns/fetchFns';
 import KakaoMapBoardInsert from '../kakaoMapComponents/KakaoMapBoardInsert';
 import { API_URL } from '../../Constants';
 
@@ -53,19 +53,9 @@ function BoardInsert() {
     formData.append("longitude", longitude);
     formData.append("sellState", "ON_SALE");
     formData.append("htmlString", htmlString);
-    //formData.append("deltaString", deltaString);
+    formData.append("deltaString", `[${JSON.stringify(delta.ops[0])}]`);
 
-
-    console.log(formData.get("title"));
-    console.log(formData.get("imgFile"));
-    console.log(formData.get("productName"));
-    console.log(formData.get("price"));
-    console.log(formData.get("latitude"));
-    console.log(formData.get("longitude"));
-    console.log(formData.get("sellState"));
-    console.log(formData.get("htmlString"));
-
-    fetch_multiForm("POST", `${API_URL}/board-service/boards`, formData)
+    fetch_multiForm2("POST", `${API_URL}/board-service/boards`, formData)
 
   }
 
@@ -82,10 +72,8 @@ function BoardInsert() {
         body: formData,
       });
       const data = await response.json();
-      console.log(data.result)
       return `${API_URL}/imgfile-service/getimgdata?id=${data.result}`;
     } catch (error) {
-      console.log(error);
     }
   };
 

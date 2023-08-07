@@ -34,7 +34,6 @@ function ChatRoom() {
 
   useEffect(() => {
     if (roomTitle) {
-      console.log(roomTitle);
       client.onConnect = () => {
         client.subscribe(`/sub/chatroom/${roomTitle}`, (msg) => {
           const newMessage = JSON.parse(msg.body);

@@ -13,7 +13,6 @@ function MemberDetail() {
       `http://localhost:9005/api/member/name/${username}`,
       null
     ).then((data) => {
-      console.log(data);
       setMember(data.result);
     });
   }, [username]);

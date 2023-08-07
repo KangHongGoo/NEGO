@@ -14,7 +14,6 @@ function KakaoMapUpdate(props) {
   
 function callback (result, status) {
   if (status === kakao.maps.services.Status.OK){
-    console.log(result);
     setAddArr(result);
   }
 }
@@ -43,10 +42,6 @@ const lat = props.getPositionData.latitude;
       marker.setPosition(latlng);
       props.setPositionData.setLatitude(latlng.Ma);
       props.setPositionData.setLongitude(latlng.La);
-      
-      console.log(latlng);
-      console.log("Lat: " + latlng.Ma);
-      console.log("Lng :" + latlng.La);
 
     });
     

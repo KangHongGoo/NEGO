@@ -310,20 +310,10 @@ public class UserController {
 	
 	
 	
-//	@GetMapping("/test")
-//	public ResponseEntity<?> test(){
-//		System.out.println(":::::::::::::::잘 될까?::::::로그인 하고 토큰 첨부해야 되는데:::::::::::::");
-//		
-//		return ResponseEntity.status(HttpStatus.OK).body(new UserInfoResponse());
-//	}
 	
 	@PostMapping("/testinsert")
 	public void testinsert() {
-		System.out.println("테스트용 데이터를 여러개 주입합니다.");
-		System.out.println("테스트용 데이터를 여러개 주입합니다.");
-		System.out.println("테스트용 데이터를 여러개 주입합니다.");
-		System.out.println("테스트용 데이터를 여러개 주입합니다.");
-		System.out.println("테스트용 데이터를 여러개 주입합니다.");
+
 		
 		Random rand = new Random();
 		for (int i = 1; i < 101; i++) {

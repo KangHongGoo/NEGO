@@ -70,3 +70,36 @@ export async function fetch_General(method, url, json_Obj) {
     
   }
 
+  export async function fetch_multiForm2(method, url, formData) {
+    let options = {
+      method: method,
+      headers: {
+        
+      },
+      body: formData
+    };
+  
+    const token = localStorage.getItem("jwt");
+    
+    if (token !== null && token.length > 0) {
+      
+      options.headers.Authorization = "Bearer " + token;
+    
+    }
+    
+    try {
+      
+      const response = await fetch(url, options);
+  
+      if (response.status === 403 || response.status === 401) {window.location.href = "/login";}
+  
+      if (!response.ok) { throw new Error("fetch failed"); }
+      
+      
+      window.location.href = "/inrangeselllist";
+      return await response.json();
+    
+    } catch (error) {console.log(error.message);}
+    
+  }
+

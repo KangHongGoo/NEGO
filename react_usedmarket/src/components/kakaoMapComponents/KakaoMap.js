@@ -42,9 +42,6 @@ function clickSearchEvent(){
       marker.setPosition(latlng);
       setPositionData.setLatitude(latlng.Ma);
       setPositionData.setLongitude(latlng.La);
-      console.log(latlng);
-      console.log("Lat: " + latlng.Ma);
-      console.log("Lng :" + latlng.La);
 
     });
     

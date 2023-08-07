@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:used_market/view_models/chat_view_model.dart';
+import 'package:used_market/view_models/my_page_view_model.dart';
 import 'package:used_market/views/board_insert.dart';
 import 'package:used_market/views/chat_room_list.dart';
 import 'package:used_market/views/in_range.dart';
@@ -30,7 +31,7 @@ class _HomeState extends State<Home> {
       },
     ),
     ChatRoomList(),
-    LoginPage(),
+    MyPage(),
   ];
 
   void _onItemTapped(HomeIndexProvider homeIndexProvider, int index) {

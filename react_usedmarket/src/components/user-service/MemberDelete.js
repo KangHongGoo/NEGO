@@ -18,7 +18,6 @@ function MemberDelete() {
     .then(data => {
       
       if(data===undefined){
-        console.log(data);
         passwordRef.current.value="";
         return;
       }

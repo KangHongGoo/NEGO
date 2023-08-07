@@ -14,7 +14,6 @@ function KakaoMapBoardInsert({ setPositionData }) {
 
   function callback(result, status) {
     if (status === kakao.maps.services.Status.OK) {
-      console.log(result);
       setAddArr(result);
     }
   }
@@ -42,9 +41,6 @@ function KakaoMapBoardInsert({ setPositionData }) {
         marker.setPosition(latlng);
         setPositionData.setLatitude(latlng.Ma);
         setPositionData.setLongitude(latlng.La);
-        console.log(latlng);
-        console.log("Lat: " + latlng.Ma);
-        console.log("Lng :" + latlng.La);
 
       });
 

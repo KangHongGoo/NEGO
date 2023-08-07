@@ -48,8 +48,7 @@ function BoardUpdate() {
     const htmlString = editor.current.getEditor().root.innerHTML;
     const deltaString = JSON.stringify(editor.current.getEditor().getContents());
     const delta = JSON.parse(deltaString);
-    console.log(editor.current.getEditor().getContents());
-    console.log(delta);
+  
     
     formData.append("title", title.current.value);
     formData.append("imgFile", imgFile);
@@ -61,15 +60,6 @@ function BoardUpdate() {
     formData.append("htmlString", htmlString);
     //formData.append("deltaString", deltaString);
 
-
-    console.log(formData.get("title"));
-    console.log(formData.get("imgFile"));
-    console.log(formData.get("productName"));
-    console.log(formData.get("price"));
-    console.log(formData.get("latitude"));
-    console.log(formData.get("longitude"));
-    console.log(formData.get("sellState"));
-    console.log(formData.get("htmlString"));
 
     fetch_multiForm("PUT", `${API_URL}/board-service/boards/${sellId}`, formData)
 
@@ -88,10 +78,8 @@ function BoardUpdate() {
         body: formData,
       });
       const data = await response.json();
-      console.log(data.result)
       return `${API_URL}/imgfile-service/getimgdata?id=${data.result}`;
     } catch (error) {
-      console.log(error);
     }
   };
 

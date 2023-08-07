@@ -52,7 +52,6 @@ function SellUpdate(props) {
 
         setSelectBtn(name);
         props.setSellData.setSellState(name);
-        console.log(name)
         }
 
 

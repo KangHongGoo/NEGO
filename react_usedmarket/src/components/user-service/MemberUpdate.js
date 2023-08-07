@@ -34,7 +34,6 @@ function onSubmitHandler(e){
         password
     }
 
-    console.log(dto);
 
     fetchFn("PUT", "http://localhost:9005/api/member", dto)
     .then(data => {
