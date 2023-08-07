@@ -36,8 +36,8 @@ function MemberDelete() {
       
         <input value={username} readOnly />
         <br />
-        <input ref={passwordRef} placeholder='비번을 입력하세요'type="password" /><br/>
-        <button onClick={onClickHandler}>삭 to the 제</button>
+        <input ref={passwordRef} placeholder='비밀번호를 입력해주세요'type="password" /><br/>
+        <button onClick={onClickHandler}>삭제</button>
      
     </div>
   );

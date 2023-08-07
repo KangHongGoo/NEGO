@@ -4,7 +4,7 @@ function MemberLogout() {
 
 
  
-        localStorage.setItem("jwt", null);
+        localStorage.removeItem("jwt");
         window.location.href = "/login"
   
 
