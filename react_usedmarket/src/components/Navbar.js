@@ -36,6 +36,7 @@ function Navbar() {
       </>
       ) : (
         <>
+        <Link className="link" to={"/inrangeselllist"}>우리동네 네고!</Link>
       <Link className="link" to={"/login"}>로그인</Link>
       <Link className="link" to={"/signup"}>회원가입</Link>
       </>

@@ -41,8 +41,7 @@ class MyPagee extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.network(userPic),
-                Text(userPic),
+                Image.network('${Constants.api_gate_url}/user-service/pic/${userResponse.username}'),
                 Text('ID: ${userResponse.username}'),
                 Text('이름: ${userResponse.name}'),
                 Text('가입날짜: ${userResponse.createAt}'),

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:used_market/view_models/chat_view_model.dart';
-import 'package:used_market/view_models/my_page_view_model.dart';
+import 'package:used_market/views/mypage.dart';
 import 'package:used_market/views/board_insert.dart';
 import 'package:used_market/views/chat_room_list.dart';
 import 'package:used_market/views/in_range.dart';
-import 'package:used_market/views/login.dart';
 
 
 class Home extends StatefulWidget {
