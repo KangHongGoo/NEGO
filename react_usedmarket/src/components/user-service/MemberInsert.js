@@ -17,6 +17,36 @@ function MemberInsert() {
   localStorage.setItem("jwt", null);
 
   const submitSignUpRequest = () => {
+    if (!picFile.current.files[0]) {
+      alert("프로필 사진을 선택해주세요.");
+      return;
+    }
+  
+    if (!username.current.value) {
+      alert("ID를 입력해주세요.");
+      return;
+    }
+  
+    if (!password.current.value) {
+      alert("비밀번호를 입력해주세요.");
+      return;
+    }
+  
+    if (password2.current.value !== password.current.value) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+  
+    if (!name.current.value) {
+      alert("이름을 입력해주세요.");
+      return;
+    }
+
+    if(!latitude) {
+      alert("거주지를 선택해주세요.")
+      return;
+    }
+    
 
     const formData = new FormData();
     formData.append("picFile", picFile.current.files[0]);
@@ -29,7 +59,7 @@ function MemberInsert() {
 
 
     fetch_multiForm("POST", "http://localhost:8000/user-service/users", formData)
-    
+  
 
   }
 

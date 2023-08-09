@@ -7,6 +7,7 @@ import 'package:used_market/home.dart';
 import 'package:used_market/view_models/chat_view_model.dart';
 import 'package:used_market/view_models/geolocation_view_model.dart';
 import 'package:used_market/view_models/login_view_model.dart';
+import 'package:used_market/view_models/mypage_view_model.dart';
 import 'package:used_market/view_models/range_search_view_model.dart';
 import 'package:used_market/views/login.dart';
 
@@ -17,6 +18,9 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MultiProvider(
     providers: [
+      ChangeNotifierProvider(
+          create: (context) => MyPageModel(),
+      ),
       ChangeNotifierProvider<LoginModel>(
         create: (context) => LoginModel()..validateJwt(),
       ),

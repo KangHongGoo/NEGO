@@ -43,8 +43,28 @@ function BoardInsert() {
     const htmlString = editor.current.getEditor().root.innerHTML;
     const deltaString = JSON.stringify(editor.current.getEditor().getContents());
     const delta = JSON.parse(deltaString);
-    console.log(editor.current.getEditor().getContents());
-    console.log(delta);
+
+    if (!title.current.value) {
+      alert("제목을 입력해주세요.")
+      return;
+    }
+
+    if(!productName) {
+      alert("상품명을 입력해주세요.")
+      return;
+    }
+
+    if(!price) {
+      alert("가격을 숫자로 입력해주세요.")
+      return;
+    }
+
+    if(!latitude) {
+      alert("거래 희망 위치를 선택해주세요.")
+      return;
+    }
+
+
     formData.append("title", title.current.value);
     formData.append("imgFile", imgFile);
     formData.append("productName", productName);

@@ -44,4 +44,5 @@ class LoginModel extends ChangeNotifier {
 
     notifyListeners();
   }
+
 }

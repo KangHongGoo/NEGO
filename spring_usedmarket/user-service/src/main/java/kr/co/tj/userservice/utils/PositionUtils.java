@@ -9,7 +9,7 @@ public class PositionUtils {
 				
 		Double distance;
 	    Double radius = 6371.0; // 지구 반지름(km)
-	    Double toRadian = Math.PI / 180;
+	    Double toRadian = Math.PI / 180; //각도를 라디안으로 변환
 
 	    Double lng1 = longitude1 * toRadian;
 	    Double lat1 = latitude1 * toRadian;

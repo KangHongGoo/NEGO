@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
       },
     ),
     ChatRoomList(),
-    MyPage(),
+    MyPagee(),
   ];
 
   void _onItemTapped(HomeIndexProvider homeIndexProvider, int index) {
