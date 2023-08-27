@@ -1,0 +1,44 @@
+
+server:
+  port: 0 
+  
+spring:
+  application:
+    name: board-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    
+  h2:
+    console:
+      enabled: true 
+      settings:
+        web-allow-others: true
+      path: /h2-console
+      
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+      
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/negomarket?serverTimezone=Asia/Seoul
+    username: tj705
+    password: tj705
+      
+eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true 
+    fetch-registry: true 
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka 

@@ -1,0 +1,33 @@
+server:
+  port: 0 # 0번 port를 사용하겠다는 의가 아님. 사용되지 않는 port번호를 임의로 할당해달라는 의미...
+  
+spring:
+  application:
+    name: sell-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/negomarket?serverTimezone=Asia/Seoul
+    username: tj705
+    password: tj705
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+      
+eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true # 유레카 서버에 등록
+    fetch-registry: true # 주기적으로 다른 인스턴스의 데이터를 받아와서 갱신
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka # 유레카 서버의 주소 정보
