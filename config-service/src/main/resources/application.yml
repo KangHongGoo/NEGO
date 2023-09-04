@@ -1,0 +1,19 @@
+server:
+  port: 8888
+  
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:D:\\workspace\\workspace_boot\\work\\git-repo
+    #     uri: https://github.com/KangHongGoo/git-repo.git
+   #      username: KangHongGoo
+    #     password: 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
+  application:
+    name: config-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest

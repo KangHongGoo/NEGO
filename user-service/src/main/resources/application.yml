@@ -1,0 +1,54 @@
+server:
+  port: 0 # 0을 사용한다는 의미가 아니고 port번호를 지정하지않고 사용 할 수 있는 port번호를임의로 할당해달라는 의미.
+  
+spring:
+  application:
+    name: user-service
+    
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    
+  h2: # h2 데이터 베이스 설정
+    console:
+      enabled: true # 브라우저에서 콘솔을 볼 수 있게 하겠다
+      settings:
+        web-allow-others: true
+      path: /h2-console # url
+      
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: 
+      
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true # 유레카 서버에 등록
+    fetch-registry: true # 주기적으로 다른 인스턴스의 데이터를 받아와서 갱신
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka # 유레카 서버의 주소 정보
+      
+data:
+  test: ho
+  test1: hello world
+  url: http://ORDER-SERVICE/order-service/orders/user/%s
+#  SECRET_KEY: mkmkmkmkmkmkmkmk
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, busrefresh
+  

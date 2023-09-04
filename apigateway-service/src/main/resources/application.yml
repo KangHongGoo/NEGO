@@ -1,0 +1,114 @@
+server:
+  port: 8000
+  
+spring:
+  application:
+    name: apigateway-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    
+  cloud:
+    gateway:
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "http://127.0.0.1:3000"
+            allowedHeaders: '*'
+            allow-credentials: true
+            allowedMethods: POST, GET, PUT, DELETE
+          
+      routes:
+      
+      - id: user-service #순서 2번
+        uri: lb://USER-SERVICE #순서 3번
+        predicates:
+        - Path=/user-service/users #순서 1번   
+        - Method= POST
+
+      - id: user-service #순서 2번
+        uri: lb://USER-SERVICE #순서 3번
+        predicates:
+        - Path=/user-service/login #순서 1번   
+        - Method= POST
+
+        
+      - id: user-service #순서 2번
+        uri: lb://USER-SERVICE #순서 3번
+        predicates:
+        - Path=/user-service/health_check #순서 1번   
+        - Method= GET
+
+        
+      - id: user-service #순서 2번
+        uri: lb://USER-SERVICE #순서 3번
+        predicates:
+        - Path=/user-service/actuator/** #순서 1번   
+        - Method= GET, POST
+        filters:
+        - RemoveRequestHeader=Cookie
+        - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
+
+
+        
+      - id: user-service #순서 2번
+        uri: lb://USER-SERVICE #순서 3번
+        predicates:
+        - Path=/user-service/** #순서 1번   
+        - Method=GET, POST, PUT, DELETE
+        filters:
+        - name: AuthorizationFilter
+    #      args:
+    #        num1: 1
+    #        num2: 2
+        
+      - id: board-service
+        uri: lb://BOARD-SERVICE
+        predicates:
+        - Path=/board-service/** #유저가 브라우저 주소창에 http://localhost:8000/user-service/users 입력 user-service를 보고 id를 확인하고 uri로 넘어감
+        - Method=GET, POST, PUT, DELETE
+        
+      - id: category-service #순서 2번
+        uri: lb://CATEGORY-SERVICE #순서 3번
+        predicates:
+        - Path=/category-service/** #순서 1번   
+        - Method=GET, POST, PUT, DELETE
+       
+        
+      - id: catalog-service #순서 2번
+        uri: lb://CATALOG-SERVICE #순서 3번
+        predicates:
+        - Path=/catalog-service/** #순서 1번   
+        - Method=GET, POST, PUT, DELETE
+        
+      - id: order-service #순서 2번
+        uri: lb://ORDER-SERVICE #순서 3번
+        predicates:
+        - Path=/order-service/** #순서 1번   
+        - Method=GET, POST, PUT, DELETE 
+      
+      
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true 
+    fetch-registry: true 
+    service-url:
+      defaultZone: http://localhost:8761/eureka 
+      
+      
+      
+data:
+  SECRET_KEY: mkmkmkmkmkmkmkmk
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, busrefresh
